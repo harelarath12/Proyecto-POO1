@@ -235,13 +235,27 @@ void modificar(vector<Registro>& registros) {
     }
 }
 
-void ordenar(vector<Registro>& registros) {
+/*void ordenar(vector<Registro>& registros) {
     sort(registros.begin(), registros.end(), [](const Registro& a, const Registro& b) {
         return a.getMascota().getNombre() < b.getMascota().getNombre();
         });
 
     cout << "Registros ordenados alfabeticamente por nombre de mascota.\n";
+}*/
+
+void ordenar(vector<Registro>& registros) {
+    int i, j;
+    int n = registros.size();
+    for (i = 0; i < n-1; i++) {     
+        for (j = 0; j < n-i-1; j++) { 
+            if (registros[j].getMascota().getNombre() > registros[j+1].getMascota().getNombre()) {
+                swap(registros[j], registros[j+1]);
+            }
+        }
+    }
+    cout << "Registros ordenados alfabeticamente por nombre de mascota.\n";
 }
+
 
 void historial(const vector<Registro>& registros) {
     string nombreMascota;
